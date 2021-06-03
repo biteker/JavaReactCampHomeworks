@@ -6,11 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="job_position")
-@Data
 public class JobPosition {
 	@Id
 	@GeneratedValue
@@ -19,25 +23,5 @@ public class JobPosition {
 	
 	@Column(name = "name")
 	private String name;
-	
-	public JobPosition() {
-		super();
-	}
-	public JobPosition(int id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	}

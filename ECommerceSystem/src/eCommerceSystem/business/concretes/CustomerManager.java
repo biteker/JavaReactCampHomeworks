@@ -39,7 +39,4 @@ public class CustomerManager implements CustomerService {
 	public List<Customer> getAll() {
 		return customerDao.getAll();
 	}
-
-
-
 }
