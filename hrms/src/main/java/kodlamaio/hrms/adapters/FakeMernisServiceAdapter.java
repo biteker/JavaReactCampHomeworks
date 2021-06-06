@@ -11,7 +11,6 @@ public class FakeMernisServiceAdapter implements CitizenService {
 
 	@Override
 	public Result isCitizen(Candidate candidate) {
-		// TODO Auto-generated method stub
 		//return new ErrorResult("Candidate is not a citizen");
 		return new SuccessResult();
 	}

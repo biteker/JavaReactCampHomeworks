@@ -13,18 +13,23 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
+import kodlamaio.hrms.dataAccess.abstracts.UserDao;
 import kodlamaio.hrms.entities.concretes.Employer;
 
 @Service
 public class EmployerManager implements UserService<Employer> {
 	private EmployerDao employerDao;
 	private BusinessRuleService<Employer> businessRuleService;
+	private UserVerifyManager userVerifyManager;
+	private UserDao userDao;
 	
 	@Autowired
-	public EmployerManager(EmployerDao employerDao, BusinessRuleService<Employer> businessRuleService) {
+	public EmployerManager(EmployerDao employerDao, BusinessRuleService<Employer> businessRuleService,
+			UserVerifyManager userVerifyManager, UserDao userDao) {
 		super();
 		this.employerDao = employerDao;
 		this.businessRuleService = businessRuleService;
+		this.userVerifyManager = userVerifyManager;
 	}
 
 	@Override
@@ -39,6 +44,9 @@ public class EmployerManager implements UserService<Employer> {
 			return new ErrorResult(business.getMessage());
 		
 		employerDao.save(employer);
+		//TODO employer doğrulama kodunu düzelt
+		//userVerifyManager.genarateVerifyCode(userDao.getOne(18)); 
+		//userVerifyManager.sendMail(employer.getEmail());
 		return new SuccessResult("Employer added.");
 	}
 

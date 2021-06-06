@@ -50,4 +50,5 @@ public class User{
 	@NotNull
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String passwordRepeat;
+	
 }
